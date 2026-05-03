@@ -1237,6 +1237,16 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── S7 방명록 ── */
   initFirebase();
 
+  /* ── 스크롤 페이드인 observer 선언 (S8 이벤트 카드 등록 전에 미리 선언) ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
   /* ── S8 이벤트 ── */
   if (C.eventLabel)    document.getElementById('s8-label').textContent    = C.eventLabel;
   if (C.eventSublabel) document.getElementById('s8-sublabel').textContent = C.eventSublabel;
@@ -1250,7 +1260,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="event-title">${escapeHtml(ev.title)}</div>
       <div class="event-body">${escapeHtml(ev.content).replace(/\n/g, '<br>')}</div>`;
     eventList.appendChild(card);
-    observer.observe(card);
   });
 
   /* ── S9 공유 ── */
@@ -1275,15 +1284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('카카오 SDK 초기화 실패:', e);
   }
 
-  /* ── 스크롤 페이드인 ── */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+  /* ── 스크롤 페이드인 — 모든 렌더링 완료 후 일괄 등록 ── */
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 
