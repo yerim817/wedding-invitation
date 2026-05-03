@@ -79,8 +79,16 @@
       letter-spacing: 4px;
       color: var(--accent);
       text-align: center;
-      padding: 32px 0 20px;
+      padding: 32px 0 4px;
       text-transform: uppercase;
+    }
+    .section-sublabel {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--label);
+      text-align: center;
+      padding: 0 0 16px;
     }
 
     /* ── 카드 ── */
@@ -175,9 +183,10 @@
       background: var(--white);
       border-radius: var(--card-radius);
       box-shadow: var(--card-shadow);
-      margin: 48px 20px 0;
-      padding: 24px 24px 28px;
+      margin: 10px 20px 0;
+      padding: 24px 24px 0;
       position: relative;
+      overflow: hidden;
     }
     .bp-flight-label {
       font-family: 'Montserrat', sans-serif;
@@ -300,15 +309,14 @@
     }
     /* 보딩패스 하단 커플 사진 */
     .bp-photo-wrap {
-      margin: 0 -24px -28px;
-      height: 200px;
+      margin: 16px -24px 0;
+      height: 220px;
       overflow: hidden;
-      border-radius: 0 0 var(--card-radius) var(--card-radius);
     }
     .bp-photo-wrap img {
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center center;
       display: block;
     }
 
@@ -1096,6 +1104,8 @@
   <!-- S8 · 이벤트 안내 -->
   <section id="s8">
     <p class="section-label" id="s8-label">Onboard Event</p>
+    <p class="section-sublabel" id="s8-sublabel">이벤트 안내</p>
+    <p class="section-sublabel" id="s8-sublabel">이벤트 안내</p>
     <div class="event-card fade-in">
       <div class="event-title" id="event-title"></div>
       <div class="event-body" id="event-body"></div>
@@ -1166,14 +1176,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function dismissIntro() {
     clearTimeout(introTimer);
     clearInterval(progressInterval);
-    overlay.classList.add('hidden');
+
+    // 오버레이 즉시 숨김
+    overlay.style.transition = 'opacity 0.5s ease';
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
     document.getElementById('skip-btn').style.display = 'none';
+
+    // fadeout 완료 후 완전 제거 + S2로 스크롤
     setTimeout(() => {
       overlay.style.display = 'none';
-      // 인트로 종료 후 S2 보딩패스로 이동
+      // S2 보딩패스 상단으로 즉시 이동
       const s2 = document.getElementById('s2');
-      if (s2) s2.scrollIntoView({ behavior: 'smooth' });
-    }, 700);
+      if (s2) {
+        const top = s2.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }, 500);
   }
 
   document.getElementById('skip-btn').addEventListener('click', dismissIntro);
@@ -1289,6 +1308,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('s8-label') && C.eventLabel) {
     document.getElementById('s8-label').textContent = C.eventLabel;
   }
+  if (document.getElementById('s8-sublabel') && C.eventSublabel) {
+    document.getElementById('s8-sublabel').textContent = C.eventSublabel;
+  }
   document.getElementById('event-title').textContent = C.event.title;
   document.getElementById('event-body').textContent = C.event.content;
 
@@ -1383,7 +1405,31 @@ document.getElementById('gallery-modal').addEventListener('touchend', e => {
    계좌 복사 + 토스트
 ════════════════════════════════════════════ */
 function copyAccount(number) {
-  navigator.clipboard.writeText(number).then(() => showToast('계좌번호가 복사되었습니다 ✓'));
+  // clipboard API (HTTPS 환경)
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(number)
+      .then(() => showToast('계좌번호가 복사되었습니다 ✓'))
+      .catch(() => fallbackCopy(number));
+  } else {
+    fallbackCopy(number);
+  }
+}
+
+// execCommand 폴백 (구형 브라우저 / HTTP 환경)
+function fallbackCopy(text) {
+  const el = document.createElement('textarea');
+  el.value = text;
+  el.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+  document.body.appendChild(el);
+  el.focus();
+  el.select();
+  try {
+    document.execCommand('copy');
+    showToast('계좌번호가 복사되었습니다 ✓');
+  } catch (e) {
+    showToast('복사 실패 — 번호를 직접 선택해 복사해주세요');
+  }
+  document.body.removeChild(el);
 }
 
 function showToast(msg) {
