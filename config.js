@@ -1,70 +1,76 @@
 /**
  * ✈ WEDDING CONFIG
  * =====================================================
- * 이 파일만 수정하면 청첩장 내용이 모두 바뀝니다!
- * 수정 후 저장하면 바로 반영됩니다.
+ *  이 파일만 수정하면 청첩장 내용이 모두 바뀝니다!
+ *  수정 후 GitHub에 다시 업로드하면 바로 반영됩니다.
+ * =====================================================
+ *
+ *  ⚠️  반드시 교체해야 할 항목
+ *      1. 카카오 앱키 — kakao.appKey, kakaoMap.appKey (같은 키)
+ *      2. 배포 URL   — kakao.shareUrl, kakao.shareImageUrl
+ *      3. Firebase   — 방명록 사용 시
  * =====================================================
  */
 
 const WEDDING_CONFIG = {
 
   /* ─────────────────────────────────────────────────
-     👫 신랑 · 신부 정보
+     👫 신랑 · 신부
   ───────────────────────────────────────────────── */
   groom: {
-    name:       "유주영",           // 신랑 이름
-    initial:    "YJY",             // 보딩패스 공항코드 (이니셜 3자리)
-    fatherName: "유재수",           // 신랑 아버지 이름
-    motherName: "정명자",           // 신랑 어머니 이름
+    name:       "유주영",
+    initial:    "YJY",      // 보딩패스 공항코드 스타일 이니셜 (3자리)
+    fatherName: "유재수",
+    motherName: "정명자",
   },
   bride: {
-    name:       "양예림",           // 신부 이름
-    initial:    "YYR",             // 보딩패스 공항코드 (이니셜 3자리)
-    fatherName: "양대환",           // 신부 아버지 이름
-    motherName: "전미숙",           // 신부 어머니 이름
+    name:       "양예림",
+    initial:    "YYR",      // 보딩패스 공항코드 스타일 이니셜 (3자리)
+    fatherName: "양대환",
+    motherName: "전미숙",
   },
 
 
   /* ─────────────────────────────────────────────────
      📅 날짜 · 시간
   ───────────────────────────────────────────────── */
-  date:      "2026년 8월 1일 토요일",  // 전체 날짜 (초대 문구에 표시)
-  dateShort: "2026.08.01",            // 보딩패스 날짜 표기
+  date:      "2026년 8월 1일 토요일",  // 초대 문구·날짜 박스에 표시
+  dateShort: "2026.08.01",            // 보딩패스 DATE 필드
   dateCode:  "26·08·01",             // 푸터 날짜 표기
-  time:      "오후 12시 30분",         // 시간 (전체 표기)
-  timeCode:  "12:30 PM",             // 보딩패스 시간 표기
-  dayOfWeek: "SAT",                   // 요일 영문
-  flightCode: "WD-2608",             // 가상 항공편명 (자유롭게 변경 가능)
+  time:      "오후 12시 30분",         // 초대 문구·날짜 박스에 표시
+  timeCode:  "12:30 PM",             // 보딩패스 TIME 필드
 
 
   /* ─────────────────────────────────────────────────
      ✈ 보딩패스 카드 특수 필드
-     (자유롭게 원하는 문구로 변경 가능)
+     원하는 문구로 자유롭게 바꿔도 됩니다
   ───────────────────────────────────────────────── */
   boardingPass: {
-    class:    "First",    // CLASS 항목
-    terminal: "Always",   // TERMINAL 항목
-    seat:     "BE-HAPPY", // SEAT 항목
+    class:    "First",
+    terminal: "Always",
+    seat:     "BE-HAPPY",
   },
 
 
   /* ─────────────────────────────────────────────────
-     📍 웨딩홀 위치 정보
+     📍 웨딩홀 위치
   ───────────────────────────────────────────────── */
   venue: {
-    name:    "솔스퀘어 컨벤션",                          // 웨딩홀 이름
-    hall:    "6층 프리미에르 홀",                         // 홀 이름 (없으면 "" 로 비워두세요)
-    address: "경기도 용인시 기흥구 마북동 용구대로 2354",   // 주소
-    tel:     "031-546-8322",                            // 전화번호
-
-    // 지도 iframe URL — 카카오맵에서 "지도 퍼가기"로 발급받은 URL을 넣어주세요
-    mapEmbed: "https://map.kakao.com/link/map/솔스퀘어컨벤션,37.2816,127.1134",
+    name:    "솔스퀘어 컨벤션",
+    hall:    "6층 프리미에르 홀",
+    address: "경기도 용인시 기흥구 마북동 용구대로 2354",
+    tel:     "031-546-8322",
 
     // 길찾기 버튼 링크
-    kakaoMapLink: "https://map.kakao.com/link/to/솔스퀘어컨벤션,37.2816,127.1134",
+    kakaoMapLink: "https://kko.to/FZOqS5Ps-S",  // 카카오맵 길찾기 링크
     naverMapLink: "https://naver.me/FxGdQzBa",
 
-    // 교통편 안내 (항목 추가·삭제 자유)
+    // 지도 중심 좌표 (카카오 지도 API용)
+    // 구글맵에서 장소 검색 → 주소창 URL에서 @위도,경도 확인
+    lat: 37.2816,   // 위도
+    lng: 127.1134,  // 경도
+
+    // 교통편 안내 — 항목 추가·삭제 자유 / 줄바꿈은 \n
     transport: [
       {
         icon:  "🚇",
@@ -83,8 +89,8 @@ const WEDDING_CONFIG = {
       },
       {
         icon:  "🚗",
-        title: "자가용",
-        body:  "지하 주차장 이용 (3시간 무료)",
+        title: "주차",
+        body:  "하객 2시간 무료. 지하 주차장 B2·B4층에서는 6층으로 바로 연결되는 엘리베이터가 없습니다. 해당 층에 주차하신 경우 계단을 이용해 한 층 이동하신 뒤 엘리베이터를 이용해 주세요.",
       },
     ],
   },
@@ -92,9 +98,8 @@ const WEDDING_CONFIG = {
 
   /* ─────────────────────────────────────────────────
      💌 초대 문구
-     줄바꿈은 \n 으로 표시합니다
   ───────────────────────────────────────────────── */
-  invitationLabel: "Passenger Announcement", // 섹션 상단 소제목
+  invitationLabel: "Passenger Announcement",
 
   invitation: `두 개의 세계가 만나
 마침내 어디로 향할지 모를
@@ -112,11 +117,11 @@ const WEDDING_CONFIG = {
 
 
   /* ─────────────────────────────────────────────────
-     🖼️ 갤러리
-     - assets/gallery/ 폴더에 사진을 넣고 파일명을 맞춰주세요
-     - 처음에 9장이 보이고, "VIEW ALL" 클릭 시 전체 표시
+     🖼️ 갤러리 (총 15장)
+     assets/gallery/ 폴더에 01.jpg ~ 15.jpg 파일명으로 넣어주세요
+     galleryInitialCount: 첫 화면 노출 수 (나머지는 VIEW ALL 클릭 시 표시)
   ───────────────────────────────────────────────── */
-  galleryInitialCount: 9,  // 처음에 보여줄 사진 수
+  galleryInitialCount: 9,
 
   gallery: [
     { src: "assets/gallery/01.jpg", alt: "웨딩 사진 01" },
@@ -139,57 +144,92 @@ const WEDDING_CONFIG = {
 
   /* ─────────────────────────────────────────────────
      💳 계좌 안내
-     gradient 는 카드 배경 그라데이션 색상입니다
+     복사 버튼 클릭 시 number 값이 클립보드에 복사됩니다
   ───────────────────────────────────────────────── */
   accounts: [
     {
       side:     "신랑측",
-      bank:     "카카오뱅크",
-      number:   "3333-00-1234567",   // ← 실제 계좌번호로 교체하세요
+      bank:     "토스뱅크",
+      number:   "1000-2017-2711",
       holder:   "유주영",
-      gradient: "linear-gradient(135deg, #2E61C7 0%, #3D84D6 100%)", // 파란 그라데이션
+      gradient: "linear-gradient(135deg, #2E61C7 0%, #3D84D6 100%)",
     },
     {
       side:     "신부측",
       bank:     "토스뱅크",
-      number:   "1002-5425-7566",    // ← 실제 계좌번호로 교체하세요
+      number:   "1002-5425-7566",
       holder:   "양예림",
-      gradient: "linear-gradient(135deg, #1A8C59 0%, #2EAD66 100%)", // 초록 그라데이션
+      gradient: "linear-gradient(135deg, #1A8C59 0%, #2EAD66 100%)",
     },
   ],
 
 
   /* ─────────────────────────────────────────────────
-     🎉 이벤트 안내
+     🎉 이벤트 안내 (여러 개 추가 가능)
+     title: 이벤트 제목
+     content: 이벤트 내용 (줄바꿈 가능)
   ───────────────────────────────────────────────── */
-  eventLabel: "Onboard Event", // 섹션 상단 소제목
+  eventLabel:    "Onboard Event",
+  eventSublabel: "이벤트 안내",
 
-  event: {
-    title:   "🎁  웨딩 이벤트 안내",
-    content: `2부 피로연에서 럭키 드로우 이벤트가 예정되어 있습니다.
-청첩장을 꼭 지참해주세요!`,
+  events: [
+    {
+      title:   "✌️  포토부스",
+      content: `웨딩홀 로비에 포토부스가 준비되어 있습니다.\n일찍 오셔서 예쁜 사진 남기세요!`,
+    },
+    {
+      title:   "🎁  럭키 드로우 이벤트",
+      content: `2부 피로연에서 럭키 드로우 이벤트가 예정되어 있습니다.\n청첩장을 꼭 지참해주세요!`,
+    },
+  ],
+
+
+  /* ─────────────────────────────────────────────────
+     🗺️ 카카오 지도 API
+     ─────────────────────────────────────────────────
+     appKey: kakao.appKey 와 동일한 JavaScript 키를 입력하세요
+     (같은 키를 두 곳에 넣으면 됩니다)
+     ─────────────────────────────────────────────────
+     발급 방법:
+       1. https://developers.kakao.com 로그인
+       2. 내 애플리케이션 → 앱 선택
+       3. 제품 링크 관리 → 웹 → 도메인 등록
+          https://YOUR_GITHUB_ID.github.io
+          http://localhost
+       4. 앱 키 → JavaScript 키 복사 → 아래 appKey에 붙여넣기
+  ───────────────────────────────────────────────── */
+  kakaoMap: {
+    appKey: "e2d8b2fa73e87757a0e86525ebd49654",  // ⚠️ kakao.appKey 와 동일한 키
+    level:  3,                            // 지도 확대 레벨 (1~14, 숫자 작을수록 확대)
+    marker: true,                         // 웨딩홀 위치에 마커(핀) 표시 여부
   },
 
 
   /* ─────────────────────────────────────────────────
      📱 카카오톡 공유
-     앱키 발급: https://developers.kakao.com
-     → 내 애플리케이션 → 앱 만들기 → JavaScript 키 복사
+     ─────────────────────────────────────────────────
+     배포 후 shareUrl, shareImageUrl 을 실제 주소로 교체하세요
+     예) https://juyoung.github.io/wedding/
   ───────────────────────────────────────────────── */
   kakao: {
-    appKey:          "YOUR_KAKAO_JAVASCRIPT_KEY",  // ← 카카오 JavaScript 키 입력
-    shareTitle:      "Boarding Pass to JUYEONG&YERIM's Wedding",
-    shareDescription:"2026년 8월 1일 토요일 오후 12시 30분 · 솔스퀘어 컨벤션",
-    shareImageUrl:   "https://YOUR_GITHUB_ID.github.io/wedding/assets/og-image.jpg", // ← 배포 후 교체
-    shareUrl:        "https://YOUR_GITHUB_ID.github.io/wedding/",                    // ← 배포 후 교체
+    appKey:           "e2d8b2fa73e87757a0e86525ebd49654",  // ⚠️ kakaoMap.appKey 와 동일한 키
+    shareTitle:       "Boarding Pass to JUYEONG&YERIM's Wedding",
+    shareDescription: "2026년 8월 1일 토요일 오후 12시 30분 · 솔스퀘어 컨벤션",
+    shareImageUrl:    "https://YOUR_GITHUB_ID.github.io/wedding/assets/og-image.jpg", // ⚠️ 배포 후 교체
+    shareUrl:         "https://YOUR_GITHUB_ID.github.io/wedding/",                    // ⚠️ 배포 후 교체
   },
 
 
   /* ─────────────────────────────────────────────────
-     🔥 Firebase (방명록 기능)
-     설정: https://console.firebase.google.com
-     → 새 프로젝트 → Realtime Database 생성 → 프로젝트 설정 → 앱 추가
-     ※ Firebase를 사용하지 않으면 그대로 두세요 (로컬 저장으로 동작)
+     🔥 Firebase (방명록)
+     ─────────────────────────────────────────────────
+     설정하지 않으면 기기 내 저장(localStorage)으로 동작합니다.
+     실제 서비스에는 Firebase 설정을 권장합니다.
+     ─────────────────────────────────────────────────
+     설정 방법:
+       1. https://console.firebase.google.com → 새 프로젝트
+       2. 빌드 → Realtime Database → 데이터베이스 만들기
+       3. 프로젝트 설정 → 내 앱 → 웹 앱 추가 → 아래 값 복붙
   ───────────────────────────────────────────────── */
   firebase: {
     apiKey:      "YOUR_API_KEY",
@@ -201,8 +241,9 @@ const WEDDING_CONFIG = {
 
   /* ─────────────────────────────────────────────────
      🎬 인트로 영상
-     - assets/intro.mp4 파일을 교체하면 됩니다
-     - duration: 자동 스킵까지의 시간 (초)
+     - assets/intro.mp4 파일을 교체하세요 (10초 내외, 20MB 이하 권장)
+     - duration 초 후 자동 Skip → 보딩패스로 이동
+     - SKIP 버튼 클릭 시에도 즉시 보딩패스로 이동
   ───────────────────────────────────────────────── */
   intro: {
     videoUrl: "assets/intro.mp4",
