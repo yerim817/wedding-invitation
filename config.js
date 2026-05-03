@@ -32,7 +32,7 @@ const WEDDING_CONFIG = {
 
 
   /* ─────────────────────────────────────────────────
-     📅 날짜 · 시간
+     📌 날짜 · 시간
   ───────────────────────────────────────────────── */
   date:      "2026년 8월 1일 토요일",  // 초대 문구·날짜 박스에 표시
   dateShort: "2026.08.01",            // 보딩패스 DATE 필드
@@ -63,7 +63,7 @@ const WEDDING_CONFIG = {
 
     // 길찾기 버튼 링크
     kakaoMapLink: "https://kko.to/FZOqS5Ps-S",  // 카카오맵 길찾기 링크
-    naverMapLink: "https://naver.me/FxGdQzBa",
+    naverMapLink: "https://map.naver.com/p/search/솔스퀘어컨벤션",
 
     // 지도 중심 좌표 (카카오 지도 API용)
     // 구글맵에서 장소 검색 → 주소창 URL에서 @위도,경도 확인
@@ -90,7 +90,7 @@ const WEDDING_CONFIG = {
       {
         icon:  "🚗",
         title: "주차",
-        body:  "하객 2시간 무료.\n지하 주차장 B2·B4층에서는 6층으로 바로 연결되는 엘리베이터가 없습니다.\n해당 층에 주차하신 경우 계단을 이용해 한 층 이동하신 뒤 엘리베이터를 이용해 주세요.",
+        body:  "하객 2시간 무료. \n지하 주차장 B2·B4층에서는 6층으로 바로 연결되는 엘리베이터가 없습니다. 해당 층에 주차하신 경우 계단을 이용해 한 층 이동하신 뒤 엘리베이터를 이용해 주세요.",
       },
     ],
   },
@@ -215,8 +215,8 @@ const WEDDING_CONFIG = {
     appKey:           "e2d8b2fa73e87757a0e86525ebd49654",  // ⚠️ kakaoMap.appKey 와 동일한 키
     shareTitle:       "Boarding Pass to JUYEONG&YERIM's Wedding",
     shareDescription: "2026년 8월 1일 토요일 오후 12시 30분 · 솔스퀘어 컨벤션",
-    shareImageUrl:    "https://YOUR_GITHUB_ID.github.io/wedding/assets/og-image.jpg", // ⚠️ 배포 후 교체
-    shareUrl:         "https://YOUR_GITHUB_ID.github.io/wedding/",                    // ⚠️ 배포 후 교체
+    shareImageUrl:    "https://yerim817.github.io/wedding-invitation/assets/og-image.jpg", // ⚠️ 배포 후 교체
+    shareUrl:         "https://yerim817.github.io/wedding-invitation/",                    // ⚠️ 배포 후 교체
   },
 
 
