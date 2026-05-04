@@ -157,7 +157,7 @@ const WEDDING_CONFIG = {
     {
       side:     "신부측",
       bank:     "토스뱅크",
-      number:   "1002-5425-7566",
+      number:   "1002-5425-7556",
       holder:   "양예림",
       gradient: "linear-gradient(135deg, #1A8C59 0%, #2EAD66 100%)",
     },
