@@ -32,7 +32,7 @@ const WEDDING_CONFIG = {
 
 
   /* ─────────────────────────────────────────────────
-     📌 날짜 · 시간
+     📅 날짜 · 시간
   ───────────────────────────────────────────────── */
   date:      "2026년 8월 1일 토요일",  // 초대 문구·날짜 박스에 표시
   dateShort: "2026.08.01",            // 보딩패스 DATE 필드
@@ -90,7 +90,7 @@ const WEDDING_CONFIG = {
       {
         icon:  "🚗",
         title: "주차",
-        body:  "하객 2시간 무료. \n지하 주차장 B2·B4층에서는 6층으로 바로 연결되는 엘리베이터가 없습니다. 해당 층에 주차하신 경우 계단을 이용해 한 층 이동하신 뒤 엘리베이터를 이용해 주세요.",
+        body:  "하객 2시간 무료. 지하 주차장 B2·B4층에서는 6층으로 바로 연결되는 엘리베이터가 없습니다. 해당 층에 주차하신 경우 계단을 이용해 한 층 이동하신 뒤 엘리베이터를 이용해 주세요.",
       },
     ],
   },
@@ -121,7 +121,7 @@ const WEDDING_CONFIG = {
      assets/gallery/ 폴더에 01.jpg ~ 15.jpg 파일명으로 넣어주세요
      galleryInitialCount: 첫 화면 노출 수 (나머지는 VIEW ALL 클릭 시 표시)
   ───────────────────────────────────────────────── */
-  galleryInitialCount: 9,
+  galleryInitialCount: 9,    // 첫 화면 노출 수 (나머지는 VIEW ALL 클릭 시 표시)
 
   gallery: [
     { src: "assets/gallery/01.jpg", alt: "웨딩 사진 01" },
@@ -139,27 +139,36 @@ const WEDDING_CONFIG = {
     { src: "assets/gallery/13.jpg", alt: "웨딩 사진 13" },
     { src: "assets/gallery/14.jpg", alt: "웨딩 사진 14" },
     { src: "assets/gallery/15.jpg", alt: "웨딩 사진 15" },
+    { src: "assets/gallery/16.jpg", alt: "웨딩 사진 16" },
+    { src: "assets/gallery/17.jpg", alt: "웨딩 사진 17" },
+    { src: "assets/gallery/18.jpg", alt: "웨딩 사진 18" },
+    { src: "assets/gallery/19.jpg", alt: "웨딩 사진 19" },
+    { src: "assets/gallery/20.jpg", alt: "웨딩 사진 20" },
   ],
 
 
   /* ─────────────────────────────────────────────────
-     💳 계좌 안내
-     복사 버튼 클릭 시 number 값이 클립보드에 복사됩니다
+     💳 계좌 안내 (토글형)
+     side: 탭 이름 / gradient: 카드 배경색
+     accounts: 해당 측 계좌 목록 (여러 개 가능)
+     TAP TO COPY 바 클릭 시 각 계좌번호 복사됩니다
   ───────────────────────────────────────────────── */
-  accounts: [
+  accountGroups: [
     {
       side:     "신랑측",
-      bank:     "토스뱅크",
-      number:   "1000-2017-2711",
-      holder:   "유주영",
       gradient: "linear-gradient(135deg, #2E61C7 0%, #3D84D6 100%)",
+      accounts: [
+        { holder: "유주영", bank: "토스뱅크", number: "1000-2016-2711" },
+        { holder: "유재수", bank: "국민은행", number: "626401-01-333674" },
+        { holder: "정명자", bank: "기업은행", number: "010-8234-0168" },
+      ],
     },
     {
       side:     "신부측",
-      bank:     "토스뱅크",
-      number:   "1002-5425-7556",
-      holder:   "양예림",
       gradient: "linear-gradient(135deg, #1A8C59 0%, #2EAD66 100%)",
+      accounts: [
+        { holder: "양예림", bank: "토스뱅크", number: "1002-5425-7556" },
+      ],
     },
   ],
 
@@ -199,7 +208,7 @@ const WEDDING_CONFIG = {
        4. 앱 키 → JavaScript 키 복사 → 아래 appKey에 붙여넣기
   ───────────────────────────────────────────────── */
   kakaoMap: {
-    appKey: "e2d8b2fa73e87757a0e86525ebd49654",  // ⚠️ kakao.appKey 와 동일한 키
+    appKey: "YOUR_KAKAO_JAVASCRIPT_KEY",  // ⚠️ kakao.appKey 와 동일한 키
     level:  3,                            // 지도 확대 레벨 (1~14, 숫자 작을수록 확대)
     marker: true,                         // 웨딩홀 위치에 마커(핀) 표시 여부
   },
@@ -212,11 +221,11 @@ const WEDDING_CONFIG = {
      예) https://juyoung.github.io/wedding/
   ───────────────────────────────────────────────── */
   kakao: {
-    appKey:           "e2d8b2fa73e87757a0e86525ebd49654",  // ⚠️ kakaoMap.appKey 와 동일한 키
+    appKey:           "YOUR_KAKAO_JAVASCRIPT_KEY",  // ⚠️ kakaoMap.appKey 와 동일한 키
     shareTitle:       "Boarding Pass to JUYEONG&YERIM's Wedding",
     shareDescription: "2026년 8월 1일 토요일 오후 12시 30분 · 솔스퀘어 컨벤션",
-    shareImageUrl:    "https://yerim817.github.io/wedding-invitation/assets/og-image.jpg", // ⚠️ 배포 후 교체
-    shareUrl:         "https://yerim817.github.io/wedding-invitation/",                    // ⚠️ 배포 후 교체
+    shareImageUrl:    "https://YOUR_GITHUB_ID.github.io/wedding/assets/og-image.jpg", // ⚠️ 배포 후 교체
+    shareUrl:         "https://YOUR_GITHUB_ID.github.io/wedding/",                    // ⚠️ 배포 후 교체
   },
 
 
