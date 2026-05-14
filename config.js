@@ -156,7 +156,7 @@ const WEDDING_CONFIG = {
   accountGroups: [
     {
       side:     "신랑측",
-      gradient: "linear-gradient(135deg, #2E61C7 0%, #3D84D6 100%)",
+      gradient: "linear-gradient(135deg, #5B9FE0 0%, #7BBFF0 100%)",
       accounts: [
         { holder: "유주영", bank: "토스뱅크", number: "1000-2016-2711" },
         { holder: "유재수", bank: "국민은행", number: "626401-01-333674" },
@@ -165,7 +165,7 @@ const WEDDING_CONFIG = {
     },
     {
       side:     "신부측",
-      gradient: "linear-gradient(135deg, #1A8C59 0%, #2EAD66 100%)",
+      gradient: "linear-gradient(135deg, #4BAE8A 0%, #6ECBA8 100%)",
       accounts: [
         { holder: "양예림", bank: "토스뱅크", number: "1002-5425-7556" },
       ],
@@ -241,11 +241,11 @@ const WEDDING_CONFIG = {
        3. 프로젝트 설정 → 내 앱 → 웹 앱 추가 → 아래 값 복붙
   ───────────────────────────────────────────────── */
   firebase: {
-  apiKey:      "AIzaSyAcoGAPingCbmRtQRrlzpKcP15r9juZSWo",
-  authDomain:  "wedding-invitation-2cd29.firebaseapp.com",
-  databaseURL: "https://wedding-invitation-2cd29-default-rtdb.firebaseio.com",
-  projectId:   "wedding-invitation-2cd29",
-},
+    apiKey:      "YOUR_API_KEY",
+    authDomain:  "YOUR_PROJECT.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+    projectId:   "YOUR_PROJECT_ID",
+  },
 
 
   /* ─────────────────────────────────────────────────
@@ -256,7 +256,7 @@ const WEDDING_CONFIG = {
   ───────────────────────────────────────────────── */
   intro: {
     videoUrl: "assets/intro.mp4",
-    duration: 10,
+    duration: 8,
   },
 
 };
