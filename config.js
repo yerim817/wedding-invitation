@@ -144,6 +144,7 @@ const WEDDING_CONFIG = {
     { src: "assets/gallery/18.jpg", alt: "웨딩 사진 18" },
     { src: "assets/gallery/19.jpg", alt: "웨딩 사진 19" },
     { src: "assets/gallery/20.jpg", alt: "웨딩 사진 20" },
+    { src: "assets/gallery/21.jpg", alt: "웨딩 사진 21" },
   ],
 
 
@@ -188,7 +189,7 @@ const WEDDING_CONFIG = {
     },
     {
       title:   "🎁  럭키 드로우 이벤트",
-      content: `2부 피로연에서 럭키 드로우 이벤트가 예정되어 있습니다.\n청첩장을 꼭 지참해주세요!`,
+      content: `2부 피로연에서 럭키 드로우 이벤트가 \n예정되어 있습니다.청첩장을 꼭 지참해주세요!`,
     },
   ],
 
