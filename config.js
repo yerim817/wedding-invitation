@@ -241,11 +241,11 @@ const WEDDING_CONFIG = {
        3. 프로젝트 설정 → 내 앱 → 웹 앱 추가 → 아래 값 복붙
   ───────────────────────────────────────────────── */
   firebase: {
-    apiKey:      "YOUR_API_KEY",
-    authDomain:  "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-    projectId:   "YOUR_PROJECT_ID",
-  },
+  apiKey:      "AIzaSyAcoGAPingCbmRtQRrlzpKcP15r9juZSWo",
+  authDomain:  "wedding-invitation-2cd29.firebaseapp.com",
+  databaseURL: "https://wedding-invitation-2cd29-default-rtdb.firebaseio.com",
+  projectId:   "wedding-invitation-2cd29",
+},
 
 
   /* ─────────────────────────────────────────────────
