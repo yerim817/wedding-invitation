@@ -19,13 +19,13 @@ const WEDDING_CONFIG = {
   ───────────────────────────────────────────────── */
   groom: {
     name:       "유주영",
-    initial:    "YJY",      // 보딩패스 공항코드 스타일 이니셜 (3자리)
+    initial:    "YJY",
     fatherName: "유재수",
     motherName: "정명자",
   },
   bride: {
     name:       "양예림",
-    initial:    "YYR",      // 보딩패스 공항코드 스타일 이니셜 (3자리)
+    initial:    "YYR",
     fatherName: "양대환",
     motherName: "전미숙",
   },
@@ -34,16 +34,15 @@ const WEDDING_CONFIG = {
   /* ─────────────────────────────────────────────────
      📅 날짜 · 시간
   ───────────────────────────────────────────────── */
-  date:      "2026년 8월 1일 토요일",  // 초대 문구·날짜 박스에 표시
-  dateShort: "2026.08.01",            // 보딩패스 DATE 필드
-  dateCode:  "26·08·01",             // 푸터 날짜 표기
-  time:      "오후 12시 30분",         // 초대 문구·날짜 박스에 표시
-  timeCode:  "12:30 PM",             // 보딩패스 TIME 필드
+  date:      "2026년 8월 1일 토요일",
+  dateShort: "2026.08.01",
+  dateCode:  "26·08·01",
+  time:      "오후 12시 30분",
+  timeCode:  "12:30 PM",
 
 
   /* ─────────────────────────────────────────────────
      ✈ 보딩패스 카드 특수 필드
-     원하는 문구로 자유롭게 바꿔도 됩니다
   ───────────────────────────────────────────────── */
   boardingPass: {
     class:    "First",
@@ -61,16 +60,12 @@ const WEDDING_CONFIG = {
     address: "경기도 용인시 기흥구 마북동 용구대로 2354",
     tel:     "031-546-8322",
 
-    // 길찾기 버튼 링크
-    kakaoMapLink: "https://kko.to/FZOqS5Ps-S",  // 카카오맵 길찾기 링크
+    kakaoMapLink: "https://kko.to/FZOqS5Ps-S",
     naverMapLink: "https://map.naver.com/p/search/솔스퀘어컨벤션",
 
-    // 지도 중심 좌표 (카카오 지도 API용)
-    // 구글맵에서 장소 검색 → 주소창 URL에서 @위도,경도 확인
-    lat: 37.2816,   // 위도
-    lng: 127.1134,  // 경도
+    lat: 37.2816,
+    lng: 127.1134,
 
-    // 교통편 안내 — 항목 추가·삭제 자유 / 줄바꿈은 \n
     transport: [
       {
         icon:  "🚇",
@@ -117,34 +112,34 @@ const WEDDING_CONFIG = {
 
 
   /* ─────────────────────────────────────────────────
-     🖼️ 갤러리 (총 15장)
-     assets/gallery/ 폴더에 01.jpg ~ 15.jpg 파일명으로 넣어주세요
+     🖼️ 갤러리 (총 21장)
+     gallery/ 폴더에 01.jpg ~ 21.jpg 파일명으로 넣어주세요
      galleryInitialCount: 첫 화면 노출 수 (나머지는 VIEW ALL 클릭 시 표시)
   ───────────────────────────────────────────────── */
-  galleryInitialCount: 9,    // 첫 화면 노출 수 (나머지는 VIEW ALL 클릭 시 표시)
+  galleryInitialCount: 9,
 
   gallery: [
-    { src: "assets/gallery/01.jpg", alt: "웨딩 사진 01" },
-    { src: "assets/gallery/02.jpg", alt: "웨딩 사진 02" },
-    { src: "assets/gallery/03.jpg", alt: "웨딩 사진 03" },
-    { src: "assets/gallery/04.jpg", alt: "웨딩 사진 04" },
-    { src: "assets/gallery/05.jpg", alt: "웨딩 사진 05" },
-    { src: "assets/gallery/06.jpg", alt: "웨딩 사진 06" },
-    { src: "assets/gallery/07.jpg", alt: "웨딩 사진 07" },
-    { src: "assets/gallery/08.jpg", alt: "웨딩 사진 08" },
-    { src: "assets/gallery/09.jpg", alt: "웨딩 사진 09" },
-    { src: "assets/gallery/10.jpg", alt: "웨딩 사진 10" },
-    { src: "assets/gallery/11.jpg", alt: "웨딩 사진 11" },
-    { src: "assets/gallery/12.jpg", alt: "웨딩 사진 12" },
-    { src: "assets/gallery/13.jpg", alt: "웨딩 사진 13" },
-    { src: "assets/gallery/14.jpg", alt: "웨딩 사진 14" },
-    { src: "assets/gallery/15.jpg", alt: "웨딩 사진 15" },
-    { src: "assets/gallery/16.jpg", alt: "웨딩 사진 16" },
-    { src: "assets/gallery/17.jpg", alt: "웨딩 사진 17" },
-    { src: "assets/gallery/18.jpg", alt: "웨딩 사진 18" },
-    { src: "assets/gallery/19.jpg", alt: "웨딩 사진 19" },
-    { src: "assets/gallery/20.jpg", alt: "웨딩 사진 20" },
-    { src: "assets/gallery/21.jpg", alt: "웨딩 사진 21" },
+    { src: "gallery/01.jpg", alt: "웨딩 사진 01" },
+    { src: "gallery/02.jpg", alt: "웨딩 사진 02" },
+    { src: "gallery/03.jpg", alt: "웨딩 사진 03" },
+    { src: "gallery/04.jpg", alt: "웨딩 사진 04" },
+    { src: "gallery/05.jpg", alt: "웨딩 사진 05" },
+    { src: "gallery/06.jpg", alt: "웨딩 사진 06" },
+    { src: "gallery/07.jpg", alt: "웨딩 사진 07" },
+    { src: "gallery/08.jpg", alt: "웨딩 사진 08" },
+    { src: "gallery/09.jpg", alt: "웨딩 사진 09" },
+    { src: "gallery/10.jpg", alt: "웨딩 사진 10" },
+    { src: "gallery/11.jpg", alt: "웨딩 사진 11" },
+    { src: "gallery/12.jpg", alt: "웨딩 사진 12" },
+    { src: "gallery/13.jpg", alt: "웨딩 사진 13" },
+    { src: "gallery/14.jpg", alt: "웨딩 사진 14" },
+    { src: "gallery/15.jpg", alt: "웨딩 사진 15" },
+    { src: "gallery/16.jpg", alt: "웨딩 사진 16" },
+    { src: "gallery/17.jpg", alt: "웨딩 사진 17" },
+    { src: "gallery/18.jpg", alt: "웨딩 사진 18" },
+    { src: "gallery/19.jpg", alt: "웨딩 사진 19" },
+    { src: "gallery/20.jpg", alt: "웨딩 사진 20" },
+    { src: "gallery/21.jpg", alt: "웨딩 사진 21" },
   ],
 
 
@@ -152,7 +147,8 @@ const WEDDING_CONFIG = {
      💳 계좌 안내 (토글형)
      side: 탭 이름 / gradient: 카드 배경색
      accounts: 해당 측 계좌 목록 (여러 개 가능)
-     TAP TO COPY 바 클릭 시 각 계좌번호 복사됩니다
+     - index 0: 컬러 그라데이션 카드
+     - index 1+: 흰색 카드
   ───────────────────────────────────────────────── */
   accountGroups: [
     {
@@ -175,12 +171,9 @@ const WEDDING_CONFIG = {
 
 
   /* ─────────────────────────────────────────────────
-     🎉 이벤트 안내 (여러 개 추가 가능)
-     title: 이벤트 제목
-     content: 이벤트 내용 (줄바꿈 가능)
+     🎉 이벤트 안내
   ───────────────────────────────────────────────── */
-  eventLabel:    "Onboard Event",
-  eventSublabel: "이벤트 안내",
+  eventLabel: "Onboard Event",
 
   events: [
     {
@@ -189,57 +182,35 @@ const WEDDING_CONFIG = {
     },
     {
       title:   "🎁  럭키 드로우 이벤트",
-      content: `2부 피로연에서 럭키 드로우 이벤트가 \n예정되어 있습니다.청첩장을 꼭 지참해주세요!`,
+      content: `2부 피로연에서 럭키 드로우 이벤트가\n예정되어 있습니다. 청첩장을 꼭 지참해주세요!`,
     },
   ],
 
 
   /* ─────────────────────────────────────────────────
      🗺️ 카카오 지도 API
-     ─────────────────────────────────────────────────
-     appKey: kakao.appKey 와 동일한 JavaScript 키를 입력하세요
-     (같은 키를 두 곳에 넣으면 됩니다)
-     ─────────────────────────────────────────────────
-     발급 방법:
-       1. https://developers.kakao.com 로그인
-       2. 내 애플리케이션 → 앱 선택
-       3. 제품 링크 관리 → 웹 → 도메인 등록
-          https://YOUR_GITHUB_ID.github.io
-          http://localhost
-       4. 앱 키 → JavaScript 키 복사 → 아래 appKey에 붙여넣기
   ───────────────────────────────────────────────── */
   kakaoMap: {
-    appKey: "YOUR_KAKAO_JAVASCRIPT_KEY",  // ⚠️ kakao.appKey 와 동일한 키
-    level:  3,                            // 지도 확대 레벨 (1~14, 숫자 작을수록 확대)
-    marker: true,                         // 웨딩홀 위치에 마커(핀) 표시 여부
+    appKey: "YOUR_KAKAO_JAVASCRIPT_KEY",
+    level:  3,
+    marker: true,
   },
 
 
   /* ─────────────────────────────────────────────────
      📱 카카오톡 공유
-     ─────────────────────────────────────────────────
-     배포 후 shareUrl, shareImageUrl 을 실제 주소로 교체하세요
-     예) https://juyoung.github.io/wedding/
   ───────────────────────────────────────────────── */
   kakao: {
-    appKey:           "YOUR_KAKAO_JAVASCRIPT_KEY",  // ⚠️ kakaoMap.appKey 와 동일한 키
+    appKey:           "YOUR_KAKAO_JAVASCRIPT_KEY",
     shareTitle:       "Boarding Pass to JUYEONG&YERIM's Wedding",
     shareDescription: "2026년 8월 1일 토요일 오후 12시 30분 · 솔스퀘어 컨벤션",
-    shareImageUrl:    "https://YOUR_GITHUB_ID.github.io/wedding/assets/og-image.jpg", // ⚠️ 배포 후 교체
-    shareUrl:         "https://YOUR_GITHUB_ID.github.io/wedding/",                    // ⚠️ 배포 후 교체
+    shareImageUrl:    "https://yerim817.github.io/wedding-invitation/assets/og-image.jpg",
+    shareUrl:         "https://yerim817.github.io/wedding-invitation/",
   },
 
 
   /* ─────────────────────────────────────────────────
      🔥 Firebase (방명록)
-     ─────────────────────────────────────────────────
-     설정하지 않으면 기기 내 저장(localStorage)으로 동작합니다.
-     실제 서비스에는 Firebase 설정을 권장합니다.
-     ─────────────────────────────────────────────────
-     설정 방법:
-       1. https://console.firebase.google.com → 새 프로젝트
-       2. 빌드 → Realtime Database → 데이터베이스 만들기
-       3. 프로젝트 설정 → 내 앱 → 웹 앱 추가 → 아래 값 복붙
   ───────────────────────────────────────────────── */
   firebase: {
     apiKey:      "YOUR_API_KEY",
@@ -251,9 +222,6 @@ const WEDDING_CONFIG = {
 
   /* ─────────────────────────────────────────────────
      🎬 인트로 영상
-     - assets/intro.mp4 파일을 교체하세요 (10초 내외, 20MB 이하 권장)
-     - duration 초 후 자동 Skip → 보딩패스로 이동
-     - SKIP 버튼 클릭 시에도 즉시 보딩패스로 이동
   ───────────────────────────────────────────────── */
   intro: {
     videoUrl: "assets/intro.mp4",
