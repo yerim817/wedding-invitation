@@ -895,7 +895,9 @@
 
 <!-- S1 · 인트로 오버레이 -->
 <div id="intro-overlay">
-  <video id="intro-video" autoplay muted playsinline loop></video>
+  <video id="intro-video" autoplay muted playsinline loop webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false">
+    <source id="intro-video-src" src="assets/intro.mp4" type="video/mp4" />
+  </video>
   <div class="intro-progress" id="intro-progress"></div>
 </div>
 <button id="skip-btn">SKIP ▶</button>
@@ -1172,7 +1174,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (elapsed >= dur) dismissIntro();
   }, 100);
 
-  if (C.intro.videoUrl) video.src = C.intro.videoUrl;
+  // 영상 로드 실패 시 3초 후 자동 스킵 (카카오 인앱 등)
+  video.addEventListener('error', () => {
+    clearInterval(progressInterval);
+    setTimeout(dismissIntro, 3000);
+  });
+  // 영상이 3초 내 재생 시작 못 하면 스킵 버튼 강조
+  setTimeout(() => {
+    if (video.paused && overlay.style.display !== 'none') {
+      const skipBtn = document.getElementById('skip-btn');
+      if (skipBtn) {
+        skipBtn.style.background = 'rgba(255,255,255,0.35)';
+        skipBtn.style.color = '#fff';
+        skipBtn.textContent = '▶ 터치하여 시작';
+      }
+    }
+  }, 3000);
+
+  // video src는 HTML에 미리 지정 (카카오 인앱 자동재생 대응)
+  // config와 다른 경로 지정 시에만 교체
+  if (C.intro.videoUrl && C.intro.videoUrl !== 'assets/intro.mp4') {
+    const src = document.getElementById('intro-video-src');
+    if (src) src.src = C.intro.videoUrl;
+    video.load();
+  }
+  // 자동재생 실패 시 재시도 (인앱 브라우저 대응)
+  video.play().catch(() => {
+    // 터치 후 재시도
+    document.addEventListener('touchstart', () => {
+      video.play().catch(() => {});
+    }, { once: true, passive: true });
+  });
 
   /* ── S2 보딩패스 ── */
   document.getElementById('bp-groom-code').textContent    = C.groom.initial;
