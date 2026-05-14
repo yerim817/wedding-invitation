@@ -615,80 +615,108 @@
     }
 
     /* ══════════════════════════════════════
-       S6 · 계좌 안내 컴포넌트
+       S6 · 계좌 안내 — 토글형 컴포넌트
     ══════════════════════════════════════ */
-    .acct-wrap {
-      margin: 0 20px 14px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    /* 신랑측/신부측 탭 */
+    .acct-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 0 20px 12px;
     }
-    /* 상단: 은행·계좌 정보 */
+    .acct-tab {
+      padding: 13px;
+      border-radius: 14px;
+      text-align: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      color: var(--label);
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(61,132,214,0.08);
+      user-select: none;
+    }
+    .acct-tab.active {
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 16px rgba(61,132,214,0.25);
+    }
+
+    /* 계좌 패널 */
+    .acct-panel { display: none; }
+    .acct-panel.active { display: block; }
+
+    /* 계좌 카드 래퍼 */
+    .acct-wrap {
+      margin: 0 20px 10px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    /* 계좌 정보 영역 */
     .acct-info {
-      padding: 20px 20px 16px;
+      padding: 18px 20px 14px;
       color: #fff;
       position: relative;
+      overflow: hidden;
     }
     .acct-info::after {
       content: '';
       position: absolute;
       right: -16px; top: -16px;
-      width: 100px; height: 100px;
+      width: 90px; height: 90px;
       border-radius: 50%;
       background: rgba(255,255,255,0.07);
       pointer-events: none;
     }
-    .acct-side {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 9px;
-      letter-spacing: 2px;
-      opacity: 0.7;
-      margin-bottom: 6px;
-      text-transform: uppercase;
+    .acct-holder-name {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
     .acct-bank {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 11px;
+      opacity: 0.8;
+      margin-bottom: 8px;
     }
     .acct-number {
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
       letter-spacing: 1px;
-      margin-bottom: 4px;
     }
-    .acct-holder { font-size: 11px; opacity: 0.7; }
-    /* 하단: 복사 버튼 컴포넌트 */
+    /* TAP TO COPY 바 */
     .acct-copy-bar {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 14px;
-      background: rgba(255,255,255,0.13);
+      padding: 12px;
+      background: rgba(0,0,0,0.18);
       border-top: 1px solid rgba(255,255,255,0.15);
       cursor: pointer;
       user-select: none;
       -webkit-user-select: none;
       transition: background 0.15s;
     }
-    .acct-copy-bar:active { background: rgba(255,255,255,0.22); }
-    .acct-copy-icon {
-      font-size: 15px;
-      line-height: 1;
-    }
+    .acct-copy-bar:active { background: rgba(0,0,0,0.28); }
+    .acct-copy-icon { font-size: 14px; line-height: 1; }
     .acct-copy-text {
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: #fff;
       letter-spacing: 1px;
     }
     .acct-copy-num {
       font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
     }
 
     /* ══════════════════════════════════════
@@ -1191,68 +1219,106 @@ document.addEventListener('DOMContentLoaded', () => {
     tList.appendChild(item);
   });
 
-  /* ── S6 계좌 안내 ── */
+  /* ── S6 계좌 안내 — 토글형 ── */
   const accountList = document.getElementById('account-list');
-  C.accounts.forEach(acc => {
-    // ── 래퍼 ──
-    const wrap = document.createElement('div');
-    wrap.className = 'acct-wrap';
+  const groups = C.accountGroups || [];
 
-    // ── 상단 정보 영역 ──
-    const info = document.createElement('div');
-    info.className = 'acct-info';
-    info.style.background = acc.gradient || 'linear-gradient(135deg,#2E61C7,#3D84D6)';
+  // 탭 영역
+  const tabsEl = document.createElement('div');
+  tabsEl.className = 'acct-tabs';
+  accountList.appendChild(tabsEl);
 
-    const side   = document.createElement('div'); side.className = 'acct-side';   side.textContent = acc.side;
-    const bank   = document.createElement('div'); bank.className = 'acct-bank';   bank.textContent = acc.bank;
-    const num    = document.createElement('div'); num.className  = 'acct-number'; num.textContent  = acc.number;
-    const holder = document.createElement('div'); holder.className = 'acct-holder'; holder.textContent = `예금주  ${acc.holder}`;
+  // 패널 영역들 생성
+  groups.forEach((group, gi) => {
+    // 탭 버튼
+    const tab = document.createElement('div');
+    tab.className = 'acct-tab' + (gi === 0 ? ' active' : '');
+    tab.textContent = group.side;
+    tab.style.background = gi === 0 ? group.gradient : 'var(--white)';
+    tabsEl.appendChild(tab);
 
-    info.appendChild(side);
-    info.appendChild(bank);
-    info.appendChild(num);
-    info.appendChild(holder);
+    // 패널
+    const panel = document.createElement('div');
+    panel.className = 'acct-panel' + (gi === 0 ? ' active' : '');
+    accountList.appendChild(panel);
 
-    // ── 하단 복사 컴포넌트 ──
-    const copyBar = document.createElement('div');
-    copyBar.className = 'acct-copy-bar';
-    // 복사 바 배경도 그라데이션에서 어둡게
-    copyBar.style.background = 'rgba(0,0,0,0.18)';
+    // 탭 클릭 이벤트
+    tab.addEventListener('click', () => {
+      // 모든 탭/패널 비활성화
+      tabsEl.querySelectorAll('.acct-tab').forEach((t, ti) => {
+        t.classList.remove('active');
+        t.style.background = groups[ti] ? '' : 'var(--white)';
+        t.style.color = '';
+      });
+      accountList.querySelectorAll('.acct-panel').forEach(p => p.classList.remove('active'));
+      // 현재 탭/패널 활성화
+      tab.classList.add('active');
+      tab.style.background = group.gradient;
+      panel.classList.add('active');
+    });
 
-    const icon = document.createElement('span'); icon.className = 'acct-copy-icon'; icon.textContent = '📋';
-    const txt  = document.createElement('span'); txt.className  = 'acct-copy-text'; txt.textContent  = 'TAP TO COPY';
-    const numDisp = document.createElement('span'); numDisp.className = 'acct-copy-num'; numDisp.textContent = acc.number;
+    // 계좌 카드들 생성
+    group.accounts.forEach(acc => {
+      const wrap = document.createElement('div');
+      wrap.className = 'acct-wrap';
 
-    copyBar.appendChild(icon);
-    copyBar.appendChild(txt);
-    copyBar.appendChild(numDisp);
+      // 정보 영역
+      const info = document.createElement('div');
+      info.className = 'acct-info';
+      info.style.background = group.gradient;
 
-    // 복사 바 전체 클릭 이벤트 (touchend + click 둘 다)
-    function doCopy(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const number = acc.number;
+      const holderEl = document.createElement('div');
+      holderEl.className = 'acct-holder-name';
+      holderEl.textContent = acc.holder;
 
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(number)
-          .then(() => {
-            icon.textContent = '✅';
-            txt.textContent = 'COPIED!';
-            showToast('계좌번호가 복사되었습니다 ✓');
-            setTimeout(() => { icon.textContent = '📋'; txt.textContent = 'TAP TO COPY'; }, 2000);
-          })
-          .catch(() => legacyCopy(number, icon, txt));
-      } else {
-        legacyCopy(number, icon, txt);
+      const bankEl = document.createElement('div');
+      bankEl.className = 'acct-bank';
+      bankEl.textContent = acc.bank;
+
+      const numEl = document.createElement('div');
+      numEl.className = 'acct-number';
+      numEl.textContent = acc.number;
+
+      info.appendChild(holderEl);
+      info.appendChild(bankEl);
+      info.appendChild(numEl);
+
+      // TAP TO COPY 바
+      const copyBar = document.createElement('div');
+      copyBar.className = 'acct-copy-bar';
+
+      const icon    = document.createElement('span'); icon.className = 'acct-copy-icon'; icon.textContent = '📋';
+      const txt     = document.createElement('span'); txt.className  = 'acct-copy-text'; txt.textContent  = 'TAP TO COPY';
+      const numDisp = document.createElement('span'); numDisp.className = 'acct-copy-num'; numDisp.textContent = acc.number;
+
+      copyBar.appendChild(icon);
+      copyBar.appendChild(txt);
+      copyBar.appendChild(numDisp);
+
+      // 복사 이벤트 (touchend + click)
+      function doCopy(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const number = acc.number;
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(number)
+            .then(() => {
+              icon.textContent = '✅'; txt.textContent = 'COPIED!';
+              showToast('계좌번호가 복사되었습니다 ✓');
+              setTimeout(() => { icon.textContent = '📋'; txt.textContent = 'TAP TO COPY'; }, 2000);
+            })
+            .catch(() => legacyCopy(number, icon, txt));
+        } else {
+          legacyCopy(number, icon, txt);
+        }
       }
-    }
+      copyBar.addEventListener('click', doCopy);
+      copyBar.addEventListener('touchend', doCopy, { passive: false });
 
-    copyBar.addEventListener('click', doCopy);
-    copyBar.addEventListener('touchend', doCopy, { passive: false });
-
-    wrap.appendChild(info);
-    wrap.appendChild(copyBar);
-    accountList.appendChild(wrap);
+      wrap.appendChild(info);
+      wrap.appendChild(copyBar);
+      panel.appendChild(wrap);
+    });
   });
 
   /* ── S7 방명록 ── */
