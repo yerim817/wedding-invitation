@@ -155,7 +155,7 @@ const WEDDING_CONFIG = {
       side:     "신랑측",
       gradient: "linear-gradient(135deg, #5B9FE0 0%, #7BBFF0 100%)",
       accounts: [
-        { holder: "유주영", bank: "토스뱅크", number: "1000-2016-2711" },
+        { holder: "유주영", bank: "국민은행", number: "626402-01-755244" },
         { holder: "유재수", bank: "국민은행", number: "626401-01-333674" },
         { holder: "정명자", bank: "기업은행", number: "010-8234-0168" },
       ],
